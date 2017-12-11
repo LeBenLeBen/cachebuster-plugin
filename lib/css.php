@@ -28,11 +28,11 @@ class CSS extends \Kirby\Component\CSS {
       return implode(PHP_EOL, $css) . PHP_EOL;
     }
 
-    $file = kirby()->roots()->assets() . DS . $url;
+    $file = kirby()->roots()->public . DS . $url;
 
     if(file_exists($file)) {
       $mod = f::modified($file);
-      $url = kirby()->urls()->assets() . '/' . dirname($url) . '/' . f::name($url) . '.' . $mod . '.css';
+      $url = kirby()->urls()->public . '/' . dirname($url) . '/' . f::name($url) . '.' . $mod . '.css';
     }
 
     return parent::tag($url, $media);

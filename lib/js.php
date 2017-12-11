@@ -28,11 +28,11 @@ class JS extends \Kirby\Component\JS {
       return implode(PHP_EOL, $js) . PHP_EOL;
     }
 
-    $file = kirby()->roots()->assets() . DS . $src;
+    $file = kirby()->roots()->public . DS . $src;
 
     if(file_exists($file)) {
       $mod = f::modified($file);
-      $src = kirby()->urls()->assets() . '/' . dirname($src) . '/' . f::name($src) . '.' . $mod . '.js';
+      $src = kirby()->urls()->public . '/' . dirname($src) . '/' . f::name($src) . '.' . $mod . '.js';
     }
 
     return parent::tag($src, $async);
